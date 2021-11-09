@@ -26,27 +26,34 @@ if (isset($_POST["enviar"])) { //nos permite recepcionar una variable que si exi
 
 		$fp = fopen($archivo_guardado, "r"); //abrir un archivo
 		$rows = 0;
+
 		while ($datos = fgetcsv($fp, 1000, ";")) {
 			$rows++;
-			// echo $datos[0] ." ".$datos[1] ." ".$datos[2]." ".$datos[3] ."<br/>";
+			//echo $datos[0] ." ".$datos[1] ." ".$datos[2]." ".$datos[3] ."<br/>";
 			if ($rows > 1) {
-				$codigo_a_validar = obtener_codigo();
-				$cantidad = sizeof($codigo_a_validar);
-				echo $codigo_a_validar[0] = "Codigo de bd";
-				for($i = 0; $i < $cantidad; $i++){
-					if($datos[$i] == $codigo_a_validar[$i]){
-						$mires = actualizar_datos($datos[0], $datos[1], $datos[2], $datos[3], $datos[4], $datos[5], $datos[6], $datos[7], $datos[8]);
-						
-					}else{
-						$resultado = insertar_datos($datos[0], $datos[1], $datos[2], $datos[3], $datos[4], $datos[5], $datos[6], $datos[7], $datos[8]);
+
+				$array_codigos = obtener_codigo();
+				$cantidad = sizeof($array_codigos);
+				for ($i = 0; $i < $cantidad; $i++) {
+					if ($datos[0] == $array_codigos[$i]) {
+						//$resultado = actualizar_datos($datos[0], $datos[1], $datos[2], $datos[3], $datos[4], $datos[5], $datos[6], $datos[7], $datos[8]);
+						echo "codigo  YA existe" . $array_codigos[$i] . " <br>";
+						/*if ($resultado) {
+							echo "se actualizo correctamnete<br/>";
+						} else {
+							echo " no se actualizo <br/>";
+						}*/
+					} else {
+						echo "codigo " .  " NO existe" . $array_codigos[$i] . " <br>";
+						//$resultado = insertar_datos($datos[0], $datos[1], $datos[2], $datos[3], $datos[4], $datos[5], $datos[6], $datos[7], $datos[8]);
+						/*if ($resultado) {
+							echo "se inserto los datos correctamnete<br/>";
+						} else {
+							echo " no se inserto  <br/>";
+						}*/
 					}
 				}
-				//$resultado = insertar_datos($datos[0], $datos[1], $datos[2], $datos[3], $datos[4], $datos[5], $datos[6], $datos[7], $datos[8]);
-				if ($resultado) {
-					echo "se inserto los datos correctamnete<br/>";
-				} else {
-					echo " no se inserto <br/>";
-				}
+				
 			}
 		}
 	} else {

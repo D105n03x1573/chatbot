@@ -44,24 +44,16 @@ function insertar_datos($cod,$nombreA,$PiApe,$SeAp,$correoA,$carrera,$pass,$tipo
  }
 
  function obtener_codigo(){
-     $array_codigos = array();
-     $query = "select codigoAlumno from alumnos ";
-     global $conexio;
-     $codigos = mysqli_query($conexio, $query);
-     if(mysqli_num_rows($codigos) > 0){
-        while($row = $codigos->fetch_assoc()){
-            array_push($array_codigos, $row);
-        }
-         return $array_codigos;
-     }else{
-         return false;
-     }
+    $array_codigos = array();
+		$query = "select * from alumnos";
+		$conexio = mysqli_connect("bzuqqebz7dygx0fzwoft-mysql.services.clever-cloud.com", "u0mt1l3vyqfvwppr", "zU6ukR0FW40qXLFDKalV", "bzuqqebz7dygx0fzwoft");
+		$codigos = mysqli_query($conexio, $query);
+		if($codigos->num_rows > 0){
+			while($row = $codigos->fetch_assoc()){
+				
+				array_push($array_codigos,  $row['codigoAlumno']);
+				
+			}
+		}
+        return $array_codigos;
  }
-
- function validar_codigos(){
-     
-
-     
- }
-
-?>
