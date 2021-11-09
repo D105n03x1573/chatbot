@@ -26,5 +26,12 @@ function iniciarSesion($table, $conexion){
     return $statement->fetch(PDO::FETCH_ASSOC);
 }
 
+function insertar_datos($cod,$nombreA,$PiApe,$SeAp,$correoA,$carrera,$pass,$tipo,$semestre){
+	$pass = hash('sha512', $pass);
+ 		global $conexio;
+ 	$sentencia = "insert into alumnos (codigoAlumno,nombreAlumno,primerApellido,segundoApellido,correoAlumno,carrera,password,tipo_usuario,semestre) values ($cod,'$nombreA','$PiApe','$SeAp','$correoA','$carrera','$pass','$tipo','$semestre')";
+ 	$ejecutar = mysqli_query($conexio,$sentencia);
+ 	return $ejecutar;
+ }
 
 ?>
