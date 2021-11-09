@@ -2,7 +2,8 @@
 
 function conn($bd_config){
     try{
-        $conexion = new PDO('mysql:host=bzuqqebz7dygx0fzwoft-mysql.services.clever-cloud.com; dbname='.$bd_config['db_name'],$bd_config['user'],$bd_config['pass']);
+        $option = [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, PDO::ATTR_EMULATE_PREPARES => false];
+        $conexion = new PDO('mysql:host=bzuqqebz7dygx0fzwoft-mysql.services.clever-cloud.com; dbname='.$bd_config['db_name'],$bd_config['user'],$bd_config['pass'], $option);
         return $conexion;
     }catch(PDOException $e){
         return false;
@@ -32,6 +33,35 @@ function insertar_datos($cod,$nombreA,$PiApe,$SeAp,$correoA,$carrera,$pass,$tipo
  	$sentencia = "insert into alumnos (codigoAlumno,nombreAlumno,primerApellido,segundoApellido,correoAlumno,carrera,password,tipo_usuario,semestre) values ($cod,'$nombreA','$PiApe','$SeAp','$correoA','$carrera','$pass','$tipo','$semestre')";
  	$ejecutar = mysqli_query($conexio,$sentencia);
  	return $ejecutar;
+ }
+
+ function actualizar_datos($cod,$nombreA,$PiApe,$SeAp,$correoA,$carrera,$pass,$tipo,$semestre){
+	$pass = hash('sha512', $pass);
+ 		global $conexio;
+ 	$sentencia = "update alumnos set nombreAlumno='$nombreA', primerApellido='$PiApe', segundoApellido='$SeAp', correoAlumno='$correoA', carrera='$carrera', password='$pass', tipo_usuario='$tipo', semestre='$semestre' WHERE codigoAlumno='$cod'";
+ 	$ejecutar = mysqli_query($conexio,$sentencia);
+ 	return $ejecutar;
+ }
+
+ function obtener_codigo(){
+     $array_codigos = array();
+     $query = "select codigoAlumno from alumnos ";
+     global $conexio;
+     $codigos = mysqli_query($conexio, $query);
+     if(mysqli_num_rows($codigos) > 0){
+        while($row = $codigos->fetch_assoc()){
+            array_push($array_codigos, $row);
+        }
+         return $array_codigos;
+     }else{
+         return false;
+     }
+ }
+
+ function validar_codigos(){
+     
+
+     
  }
 
 ?>

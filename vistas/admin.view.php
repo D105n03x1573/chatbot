@@ -30,7 +30,18 @@ if (isset($_POST["enviar"])) { //nos permite recepcionar una variable que si exi
 			$rows++;
 			// echo $datos[0] ." ".$datos[1] ." ".$datos[2]." ".$datos[3] ."<br/>";
 			if ($rows > 1) {
-				$resultado = insertar_datos($datos[0], $datos[1], $datos[2], $datos[3], $datos[4], $datos[5], $datos[6], $datos[7], $datos[8]);
+				$codigo_a_validar = obtener_codigo();
+				$cantidad = sizeof($codigo_a_validar);
+				echo $codigo_a_validar[0] = "Codigo de bd";
+				for($i = 0; $i < $cantidad; $i++){
+					if($datos[$i] == $codigo_a_validar[$i]){
+						$mires = actualizar_datos($datos[0], $datos[1], $datos[2], $datos[3], $datos[4], $datos[5], $datos[6], $datos[7], $datos[8]);
+						
+					}else{
+						$resultado = insertar_datos($datos[0], $datos[1], $datos[2], $datos[3], $datos[4], $datos[5], $datos[6], $datos[7], $datos[8]);
+					}
+				}
+				//$resultado = insertar_datos($datos[0], $datos[1], $datos[2], $datos[3], $datos[4], $datos[5], $datos[6], $datos[7], $datos[8]);
 				if ($resultado) {
 					echo "se inserto los datos correctamnete<br/>";
 				} else {
