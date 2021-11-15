@@ -1,10 +1,10 @@
 <?php
-/*
+
 if (isset($_POST["enviar"])) { //nos permite recepcionar una variable que si exista y que no sea null
 
 
-	require_once("function.php");
-	require_once("conexion.php");
+	require_once("../function.php");
+	require_once("../conexion.php");
 
 	$archivo = $_FILES["archivo"]["name"];
 	$archivo_copiado = $_FILES["archivo"]["tmp_name"];
@@ -50,38 +50,22 @@ if (isset($_POST["enviar"])) { //nos permite recepcionar una variable que si exi
 		echo " No existe el archivo copiado <br/>";
 	}
 }
-*/
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-	
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insertar datos</title>
 </head>
-
 <body>
+    <h1>Insertar nuevos datos</h1>
 
-	<h1>bienvenido administrador</h1>
-	<div class="formulario">
-		<form action="admin.php">
-			<div>
-				<a href="vistas/actualizar.datos.php">Actualizar datos</a>
-			</div>
-
-			<div>
-			<a href="vistas/insertar.datos.php">Insertar nuevos datos</a>
-			</div>
-			
+    <form action="admin.php" class="formulariocompleto" method="post" enctype="multipart/form-data">
+			<input type="file" name="archivo" class="form-control" />
+			<input type="submit" value="SUBIR ARCHIVO" class="form-control" name="enviar">
 		</form>
-	</div>
-	<a href="<?php echo RUTA . 'close.php' ?>">Cerrar sesion</a>
-
 </body>
-
 </html>
