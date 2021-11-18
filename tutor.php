@@ -1,5 +1,56 @@
-<?php
-include('db.php'); 
+<?php session_start();
+
+require 'admin/config.php';
+require 'function.php';
+
+
+//Comprobar sesion
+if(!isset($_SESSION['usuario'])){
+    header('Location: '.RUTA.'login.php');
+}
+
+
+$conn = conn($bd_config);
+$user = iniciarSesion('users',$conn);
+
+
+if($user['tipo_usuario'] == 'tutor'){
+    require 'vistas/tutor.view.php';
+}else{
+    header('Location: '.RUTA.'index.php');
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*include('db.php'); 
 session_start();
 $codigoTutor = $_SESSION['tutor'];
 $nombreTutor = "";
@@ -18,5 +69,5 @@ if($response->num_rows > 0){
     
     //echo "Tu tutor es: " . $nombreTutor;
     //echo "<br> Su correo es: " . $correoTutor;
-}
+}*/
 ?>

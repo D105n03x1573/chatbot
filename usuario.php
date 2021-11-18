@@ -15,7 +15,7 @@ $user = iniciarSesion('users',$conn);
 
 
 if($user['tipo_usuario'] == 'usuario'){
-    require 'vistas/usuario.view.html';
+    require 'vistas/usuario.view.php';
 }else{
     header('Location: '.RUTA.'index.php');
 }
