@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chatbot</title>
-    <link rel="stylesheet" href="static/css/chat.css">
+    <link rel="stylesheet" href="static/css/style.css">
     <link rel="stylesheet" href="static/css/home.css">
     <link rel="stylesheet" href="static/css/normalize.css">
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>

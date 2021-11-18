@@ -103,9 +103,11 @@ html,body{
     display: inline-block;   
     background:  rgba(49, 230, 4, 0.705);
     padding: 10px;
+    overflow: auto;
+    max-width: auto;
     border-radius: 8px;
     border-bottom-left-radius: 2px;
-    max-width: 80%;
+
     margin-left: 10px;
     animation: floatup .5s forwards;
 }
@@ -114,18 +116,20 @@ html,body{
     font-family: Helvetica;
     font-weight: normal;
     font-size: 14px;
-    text-align: left;
+    text-align: right;
 }
 .userText span {
     line-height: 1.5em;
-    display: inline-block;
+    display: flex;
     background:  dodgerblue;
     padding: 10px;
     border-radius: 8px;
     border-bottom-left-radius: 2px;
-    max-width: 80%;
+    max-width: auto;
+    overflow: auto;
     margin-left: 10px;
-    animation: floatup .5s forwards
+
+    animation: floatup .5s forwards;
 }
 
 .wrapper .typing-field{
