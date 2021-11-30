@@ -37,9 +37,11 @@
                 </tr>
             </thead>
             <tbody>
-                <?php
+                <?php 
 
-                $query = "SELECT * FROM alumnos where codigoAlumno in (SELECT codigoAlumno FROM relaciontutoralumno where correoTutores like 'aaron.jimenez@academicos.udg.mx')";
+                
+
+                $query = "SELECT * FROM alumnos where codigoAlumno in (SELECT codigoAlumno FROM relaciontutoralumno where correoTutores like '$user')";
                 $result_task = mysqli_query($conn, $query);
 
                 while($row = mysqli_fetch_array($result_task)){ ?>

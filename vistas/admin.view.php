@@ -75,7 +75,7 @@ if (isset($_POST["enviar"])) { //nos permite recepcionar una variable que si exi
 			</div>
 
 			<div>
-			<a href="vistas/insertar.datos.php">Insertar nuevos datos</a>
+			<a href="vistas/insertar.datos.view.php">Insertar nuevos datos</a>
 			</div>
 			
 		</form>

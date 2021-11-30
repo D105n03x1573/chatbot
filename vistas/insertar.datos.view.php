@@ -1,4 +1,4 @@
-<?php
+<?php session_start();
 
 if (isset($_POST["enviar"])) { //nos permite recepcionar una variable que si exista y que no sea null
 
@@ -63,9 +63,10 @@ if (isset($_POST["enviar"])) { //nos permite recepcionar una variable que si exi
 <body>
     <h1>Insertar nuevos datos</h1>
 
-    <form action="admin.php" class="formulariocompleto" method="post" enctype="multipart/form-data">
+    <form action="insertar.datos.view.php" class="formulariocompleto" method="post" enctype="multipart/form-data">
 			<input type="file" name="archivo" class="form-control" />
 			<input type="submit" value="SUBIR ARCHIVO" class="form-control" name="enviar">
+			<input type="button" onclick="history.back()" name="volver" value="volver">
 		</form>
 </body>
 </html>
