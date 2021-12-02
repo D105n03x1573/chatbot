@@ -1,6 +1,6 @@
 <?php
 
-define('RUTA', 'http://localhost/login/'); 
+define('RUTA', 'http://192.168.64.2/login/'); 
 
 //base de datos
 $bd_config=[

@@ -58,15 +58,18 @@ if (isset($_POST["enviar"])) { //nos permite recepcionar una variable que si exi
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet"> 
+	<link rel="stylesheet" href="../static/css/files.css">
     <title>Insertar datos</title>
 </head>
 <body>
-    <h1>Insertar nuevos datos</h1>
-
     <form action="insertar.datos.view.php" class="formulariocompleto" method="post" enctype="multipart/form-data">
-			<input type="file" name="archivo" class="form-control" />
-			<input type="submit" value="SUBIR ARCHIVO" class="form-control" name="enviar">
-			<input type="button" onclick="history.back()" name="volver" value="volver">
-		</form>
+	<h1>Insertar nuevos datos</h1>			
+		<ul>
+			<li><button class="style-1"><input type="file" name="archivo" class="examinar" style="background-color:white" /></button></li>
+			<li><button class="style-1"><input type="submit" value="SUBIR ARCHIVO" class="form-control" name="enviar"></button></li>
+			<li><button class="style-1"><input type="button"  onclick="history.back()" name="volver" value="VOLVER"></button></li>
+		</ul>		
+	</form>
 </body>
 </html>
