@@ -66,7 +66,8 @@ if (isset($_POST["enviar"])) { //nos permite recepcionar una variable que si exi
 		<ul>
 			<li><button class="style-1"><input type="file" name="archivo" class="form-control" /></button></li>
 			<li><button class="style-1"><input type="submit" value="SUBIR ARCHIVO" class="form-control" name="enviar"></button></li>
-			<li><button class="style-1"><input type="button" onclick="history.back()" name="volver" value="VOLVER"></button></li>
+			<!-- <li><button class="style-1"><input type="button"  onclick="history.back()" name="volver" value="VOLVER"></button></li> -->
+			<a href="javascript:history.back()"> Volver Atrás</a>
 		</ul>	
     </form>	
 </div>
