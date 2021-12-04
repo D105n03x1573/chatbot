@@ -6,48 +6,37 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./static/css/font-awesome.min.css">
-    <link rel="stylesheet" href="./static/css/login.css">
+    <link rel="stylesheet" href="./static/css/login1.css">
     <link rel="stylesheet" href="./static/css/normalize.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 
     <title>Document</title>
 </head>
 
-<body class="bg-image">
-
-
-    <input type="checkbox" id="click">
-    <label for="click">
-        <i class="fab fa-facebook-messenger"></i>
-        <i class="fas fa-times"></i>
-    </label>
-    <div class="wrapper">
-        <div class="head-text">
-            Necesitas ayuda?
-        </div>
-        <div class="chat-box">
-            <div class="desc-text">
-                Por favor, inicia sesion para que el TutorBot pueda ayudarte.
+<body>
+    <div class="login-dark">
+        <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
+            <h2 class="sr-only">Login Form</h2>
+            <div class="illustration"><i class="icon ion-ios-locked-outline"></i></div>
+            <div class="form-group">
+                <input class="form-control" type="text" name="usuario" placeholder="Usuario" required>
             </div>
-            <form  action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
-                <div class="field">
-                    <input type="text" placeholder="Ingresa su usuario" name="usuario" required>
-                </div>
-                <div class="field">
-                    <input type="password" placeholder="Ingrese su contraseña" name="pass" required>
-                </div>
-                <ul>
+            <div class="form-group">
+                <input class="form-control" type="password" name="pass" placeholder="Contraseña" required>
+            </div>
+            <ul>
                 <?php if(!empty($errores)): ?>
                     <?php echo $errores; ?>
                 <?php endif; ?>
-                </ul>
-                <div class="field">
-                    <button type="submit" value="Ingresar">Iniciar Chat</button>
-                </div>
-            </form>
-        </div>
+            </ul>
+            <div class="form-group">
+                <button class="btn btn-primary btn-block" type="submit" value="Ingresar">Ingresar</button>
+                <!-- </div><a href="#" class="forgot">Forgot your email or password?</a> --> 
+        </form>
     </div>
-
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
