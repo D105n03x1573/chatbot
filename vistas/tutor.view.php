@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php require 'admin/config.php'; ?>
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -38,10 +37,11 @@
             </thead>
             <tbody>
                 <?php 
+                require 'admin/config.php';
+                $usuarioTutor  = $_SESSION['usuario'];
 
                 
-
-                $query = "SELECT * FROM alumnos where codigoAlumno in (SELECT codigoAlumno FROM relaciontutoralumno where correoTutores like '$user')";
+                $query = "SELECT * FROM alumnos where codigoAlumno in (SELECT codigoAlumno FROM relaciontutoralumno where correoTutores like '$usuarioTutor')";
                 $result_task = mysqli_query($conn, $query);
 
                 while($row = mysqli_fetch_array($result_task)){ ?>
@@ -51,16 +51,9 @@
                         <td><?php echo $row['correoAlumno'] ?></td>
                         <td><?php echo $row['semestre'] ?></td>
                     </tr>
-
                 <?php } ?>
             </tbody>
-
         </table>
-
     </div>
-
-
-
 </body>
-
 </html>

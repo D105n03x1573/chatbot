@@ -14,13 +14,10 @@ $conn = conn($bd_config);
 $user = iniciarSesion('users',$conn);
 
 
-if($user['tipo_usuario'] == 'usuario'){
+if($user['tipo_usuario'] == 'alumno'){
     require 'vistas/usuario.view.php';
 }else{
     header('Location: '.RUTA.'index.php');
 }
-
-
-
 
 ?>
