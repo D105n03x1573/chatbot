@@ -36,7 +36,7 @@
 		</thead>
 		<tbody>
         <?php 
-            require 'admin/config.php';
+
             $usuarioTutor  = $_SESSION['usuario'];
 
             
