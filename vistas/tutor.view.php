@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php require 'admin/config.php'; ?>
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -36,6 +35,14 @@
 		</thead>
 		<tbody>
         <?php 
+            $conn = mysqli_connect("bzuqqebz7dygx0fzwoft-mysql.services.clever-cloud.com", "u0mt1l3vyqfvwppr", "zU6ukR0FW40qXLFDKalV", "bzuqqebz7dygx0fzwoft") or die("database Error");
+            
+            
+            if (mysqli_connect_errno()) {
+                printf("Conexion Fallida: %s\n", mysqli_connect_error());
+                exit();
+            }
+            
 
             $usuarioTutor  = $_SESSION['usuario'];
 
