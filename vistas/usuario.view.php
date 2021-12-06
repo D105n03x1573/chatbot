@@ -11,7 +11,6 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-<h3 id="titulo-tutor">Tu tutor es</h3>
     <div class="chat-bar-collapsible">
         <div class="wrapper">
             <button id="chat-button" type="button" class="collapsible">
