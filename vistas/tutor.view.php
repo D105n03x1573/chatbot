@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php require 'admin/config.php'; ?>
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Document</title>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
+    <link rel="stylesheet" href="./static/css/tutor.css">
 
     <!-- BOOTSTRAP 4 -->
     <link rel="stylesheet" href="https://bootswatch.com/4/yeti/bootstrap.min.css">
@@ -21,39 +22,39 @@
 
 <body>
 
-	<h1>bienvenido tutor</h1>
+<div id="page-wrap">
+    <a href="<?php echo RUTA . 'close.php' ?>">Cerrar sesion</a>
+	<h1>Bienvenido Tutor</h1>
+	<table>
+		<thead>
+		<tr>
+			<th>Nombre</th>
+			<th>Primer Apellido</th>
+			<th>Correo</th>
+			<th>Semestre</th>
+		</tr>
+		</thead>
+		<tbody>
+        <?php 
+            require 'admin/config.php';
+            $usuarioTutor  = $_SESSION['usuario'];
 
-	<a href="<?php echo RUTA . 'close.php' ?>">Cerrar sesion</a>
+            
+            $query = "SELECT * FROM alumnos where codigoAlumno in (SELECT codigoAlumno FROM relaciontutoralumno where correoTutores like '$usuarioTutor')";
+            $result_task = mysqli_query($conn, $query);
 
-    <div class="col-md-8">
-        <table class="table table-bordered">
-            <thead>
+            while($row = mysqli_fetch_array($result_task)){ ?>
                 <tr>
-                    <th>Nombre</th>
-                    <th>Apellido</th>
-                    <th>Correo</th>
-                    <th>Semestre</th>
+                    <td><?php echo $row['nombreAlumno'] ?></td>
+                    <td><?php echo $row['primerApellido'] ?></td>
+                    <td><?php echo $row['correoAlumno'] ?></td>
+                    <td><?php echo $row['semestre'] ?></td>
                 </tr>
-            </thead>
-            <tbody>
-                <?php 
-                require 'admin/config.php';
-                $usuarioTutor  = $_SESSION['usuario'];
+            <?php } ?>
+		</tbody>
+	</table>
+ </div>
 
-                
-                $query = "SELECT * FROM alumnos where codigoAlumno in (SELECT codigoAlumno FROM relaciontutoralumno where correoTutores like '$usuarioTutor')";
-                $result_task = mysqli_query($conn, $query);
-
-                while($row = mysqli_fetch_array($result_task)){ ?>
-                    <tr>
-                        <td><?php echo $row['nombreAlumno'] ?></td>
-                        <td><?php echo $row['primerApellido'] ?></td>
-                        <td><?php echo $row['correoAlumno'] ?></td>
-                        <td><?php echo $row['semestre'] ?></td>
-                    </tr>
-                <?php } ?>
-            </tbody>
-        </table>
-    </div>
 </body>
+
 </html>
