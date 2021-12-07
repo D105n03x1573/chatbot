@@ -12,7 +12,8 @@ if (mysqli_connect_errno()) {
 
 $query = "SELECT respuestasbecas, linksbecas FROM preguntasbecas WHERE preguntabecas LIKE '%$getMesg%'";
 $query2 = "SELECT respuestasorientacion, links FROM preguntasorientacion WHERE preguntaorientacion LIKE '%$getMesg%'";
-
+$query3 = "SELECT respuestasidiomas, link FROM preguntasidiomas where preguntaidiomas like '%$getMesg%'";
+$query4 = "SELECT respuestaderechos, link FROM preguntasderechosyobligaciones where preguntaderechos like '%$getMesg%'";
 
 
 if ($result = mysqli_query($conn, $query)) {
@@ -28,6 +29,19 @@ if($result = mysqli_query($conn, $query2)) {
     }
     mysqli_free_result($result);
 }
+if($result = mysqli_query($conn, $query3)) {
+    while ($row = mysqli_fetch_assoc($result)) {
+        printf ("%s (%s)\n", $row["respuestasidiomas"],$row["link"]);
+    }
+    mysqli_free_result($result);
+}
+if($result = mysqli_query($conn, $query4)) {
+    while ($row = mysqli_fetch_assoc($result)) {
+        printf ("%s (%s)\n", $row["respuestaderechos"],$row["link"]);
+    }
+    mysqli_free_result($result);
+}
+
 
 
 /* Cierra la conexion */
