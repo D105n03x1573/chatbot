@@ -21,19 +21,18 @@
 
 <body>
 
-<div id="page-wrap">
-    <a href="<?php echo RUTA . 'close.php' ?>">Cerrar sesion</a>
-	<h1>Bienvenido Tutor</h1>
-	<table>
-		<thead>
-		<tr>
-			<th>Nombre</th>
+<h2>Bienvenido Tutor</h2>
+<div class="table-wrapper">
+    <table class="fl-table">
+        <thead>
+        <tr>
+            <th>Nombre</th>
 			<th>Primer Apellido</th>
 			<th>Correo</th>
 			<th>Semestre</th>
-		</tr>
-		</thead>
-		<tbody>
+        </tr>
+        </thead>
+        <tbody>
         <?php 
             $conn = mysqli_connect("bzuqqebz7dygx0fzwoft-mysql.services.clever-cloud.com", "u0mt1l3vyqfvwppr", "zU6ukR0FW40qXLFDKalV", "bzuqqebz7dygx0fzwoft") or die("database Error");
             
@@ -58,10 +57,12 @@
                     <td><?php echo $row['semestre'] ?></td>
                 </tr>
             <?php } ?>
-		</tbody>
-	</table>
- </div>
-
+        <tbody>
+    </table>
+</div>
+<p class="centrar"> 
+    <a class="enlace" href="<?php echo RUTA . 'close.php' ?>">Cerrar sesion</a>
+</p>
 </body>
 
 </html>
