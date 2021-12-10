@@ -46,7 +46,7 @@
             $usuarioTutor  = $_SESSION['usuario'];
 
             
-            $query = "SELECT * FROM alumnos where codigoAlumno in (SELECT codigoAlumno FROM relaciontutoralumno where correoTutores like '$usuarioTutor')";
+            $query = "SELECT * FROM alumnos where codigoAlumno in (SELECT codigoAlumno FROM relaciontutoralumno where codigoTutor like '$usuarioTutor')";
             $result_task = mysqli_query($conn, $query);
 
             while($row = mysqli_fetch_array($result_task)){ ?>
