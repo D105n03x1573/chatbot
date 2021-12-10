@@ -7,10 +7,52 @@
     <link rel="stylesheet" href="static/css/style.css">
     <link rel="stylesheet" href="static/css/home.css">
     <link rel="stylesheet" href="static/css/normalize.css">
+    
+    <link rel="stylesheet" href="./static/css/alumno.css">
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
+<h2>Bienvenido</h2>
+<div class="table-wrapper">
+    <table class="fl-table">
+        <thead>
+        <tr>
+            <th>Nombre</th>
+			<th>Primer Apellido</th>
+			<th>Correo</th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php 
+            $conn = mysqli_connect("bzuqqebz7dygx0fzwoft-mysql.services.clever-cloud.com", "u0mt1l3vyqfvwppr", "zU6ukR0FW40qXLFDKalV", "bzuqqebz7dygx0fzwoft") or die("database Error");
+            
+            
+            if (mysqli_connect_errno()) {
+                printf("Conexion Fallida: %s\n", mysqli_connect_error());
+                exit();
+            }
+            
+
+            $usuarioAlumno  = $_SESSION['usuario'];
+
+            
+            $query = "SELECT nombreTutor, Apellido1Tutor, correoTutor FROM tutores where codigoTutor like (SELECT codigoTutor FROM relaciontutoralumno where codigoAlumno like '$usuarioAlumno')";
+            $result_task = mysqli_query($conn, $query);
+
+            while($row = mysqli_fetch_array($result_task)){ ?>
+                <tr>
+                    <td><?php echo $row['nombreTutor'] ?></td>
+                    <td><?php echo $row['Apellido1Tutor'] ?></td>
+                    <td><?php echo $row['correoTutor'] ?></td>
+                </tr>
+            <?php } ?>
+        <tbody>
+    </table>
+</div>
+<p class="centrar"> 
+    <a class="enlace" href="<?php echo RUTA . 'close.php' ?>">Cerrar sesion</a>
+</p>
     <div class="chat-bar-collapsible">
         <div class="wrapper">
             <button id="chat-button" type="button" class="collapsible">
@@ -31,7 +73,7 @@
                 <form action="message.php" method="post">
                     <div class="typing-field">
                         <div class="input-data">
-                            <input class="letras" id="dt" type="text" placeholder="Escribe algo aquí..." name="pregunta" required>
+                            <input class="letras" id="dt" type="text" required placeholder="Escribe algo aquí..." name="pregunta" >
                             <button id="btn-enviar">Enviar</button>
                         </div>
                     </div>
@@ -39,7 +81,6 @@
             </div>
         </div>
     </div>
-    <a href="<?php echo RUTA.'close.php'?>">Cerrar sesion</a>
     <script>
         $(document).ready(function () {
             $("#btn-enviar").on("click", function () {
@@ -73,5 +114,4 @@
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="static/scripts/chat.js"></script>
-<script src="static/scripts/fetch.js"></script>
 </html>
